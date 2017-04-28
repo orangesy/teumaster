@@ -15,7 +15,7 @@ server = {
 }
 
 statsd = {
-    'host': 'vsdx.com',
+    'host': 'example.com',
     'prefix': 'ceph.test.teuthology.your_lab',
 }
 
