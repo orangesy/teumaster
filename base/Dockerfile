@@ -1,8 +1,11 @@
 FROM ubuntu:trusty
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
-    apt-get install -y openssh-server vim python iproute git && \
+    apt-get install -y openssh-server vim python-dev iproute git python-virtualenv libevent-dev python-libvirt beanstalkd && \
     apt-get clean
+
+RUN wget https://bootstrap.pypa.io/get-pip.py && \
+    python get-pip.py
 
 RUN mkdir /var/run/sshd
 RUN echo 'root:!Q@W3e4r' | chpasswd
