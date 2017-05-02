@@ -1,10 +1,10 @@
 # Server Specific Configurations
 server = {
-    'port': 8081,
+    'port': 8089,
     'host': '0.0.0.0'
 }
 
-paddles_address = 'http://localhost:8080'
+paddles_address = 'http://localhost:8088'
 
 # Pecan Application Configurations
 app = {

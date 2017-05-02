@@ -1,6 +1,7 @@
 FROM simonchuang12/teumaster-base
 
-RUN apt-get install -y nginx qemu-utils libssl-dev libev-dev libvirt-dev libmysqlclient-dev libffi-dev libyaml-dev && \
+RUN apt-get install -y openssh-server vim python-dev iproute git python-virtualenv libevent-dev python-libvirt beanstalkd \
+    nginx qemu-utils libssl-dev libev-dev libvirt-dev libmysqlclient-dev libffi-dev libyaml-dev && \
     apt-get clean
 
 RUN useradd -ms /bin/bash teuthworker
@@ -24,5 +25,6 @@ RUN wget -O /etc/nginx/sites-available/nginx_test_logs  http://docs.ceph.com/teu
     rm /etc/nginx/sites-enabled/default
 
 ADD run.sh /run.sh
+ADD teuthology.yaml /etc/teuthology.yaml
 
 CMD ["/run.sh"]

@@ -10,7 +10,7 @@ from paddles.hooks.cors import CorsHook
 
 # Server Specific Configurations
 server = {
-    'port': '8080',
+    'port': '8088',
     'host': '0.0.0.0'
 }
 
@@ -20,7 +20,7 @@ statsd = {
 }
 
 # These values will be specific to your site
-address = 'http://paddles.front.sepia.ceph.com'
+address = 'http://paddles.front.example.com'
 job_log_href_templ = 'http://qa-proxy.ceph.com/teuthology/{run_name}/{job_id}/teuthology.log'  # noqa
 default_latest_runs_count = 25
 

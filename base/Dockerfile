@@ -1,4 +1,4 @@
-FROM ubuntu:trusty
+FROM ubuntu:xenial
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
     apt-get install -y openssh-server vim python-dev iproute git python-virtualenv libevent-dev python-libvirt beanstalkd && \
