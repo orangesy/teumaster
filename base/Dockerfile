@@ -1,7 +1,10 @@
 FROM ubuntu:xenial
 
-RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
-    apt-get install -y openssh-server vim python-dev iproute git python-virtualenv libevent-dev python-libvirt beanstalkd && \
+ENV HOME /root
+ENV DEBIAN_FRONTEND noninteractive
+
+RUN apt-get update && \
+    apt-get install -y openssh-server vim python-dev iproute git python-virtualenv libevent-dev python-libvirt beanstalkd sudo && \
     apt-get clean
 
 RUN wget https://bootstrap.pypa.io/get-pip.py && \
