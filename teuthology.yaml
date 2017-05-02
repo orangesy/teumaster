@@ -1,0 +1,19 @@
+default_machine_type: magna
+lock_server: http://127.0.0.1:8088/
+results_server: http://127.0.0.1:8088/
+results_ui_server: http://127.0.0.1:8089/
+lab_domain: example.com
+queue_host: localhost
+queue_port: 11300
+archive_base: /root/archive
+verify_host_keys: false
+ceph_git_base_url: https://github.com/ceph/
+ceph_git_url: https://github.com/ceph/ceph.git
+ceph_qa_suite_git_url: https://github.com/ceph/ceph.git
+# ceph_qa_suite_git_url: https://github.com/ceph/ceph-qa-suite.git
+gitbuilder_host: localhost
+reserve_machines: 0
+archive_server: http://localhost/teuthology/
+max_job_time: 86400
+automated_scheduling: true
+watchdog_interval: 10

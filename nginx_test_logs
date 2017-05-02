@@ -1,0 +1,10 @@
+server {
+        location ~ /teuthology/ {
+                rewrite /teuthology/(.*)   /$1   break;
+        	allow all;
+        	autoindex on;
+#        server_name *;
+        	root /home/teuthworker/archive;
+        	default_type text/plain;
+	}
+}

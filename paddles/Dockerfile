@@ -1,6 +1,6 @@
 FROM simonchuang12/teumaster-base
 
-RUN apt-get install -y postgresql postgresql-contrib postgresql-server-dev-all supervisor && \
+RUN apt-get install -y postgresql postgresql-contrib postgresql-server-dev-all supervisor gcc && \
     apt-get clean
 
 # Install paddles

@@ -1,30 +1,31 @@
 FROM simonchuang12/teumaster-base
 
-RUN apt-get install -y openssh-server vim python-dev iproute git python-virtualenv libevent-dev python-libvirt beanstalkd \
-    nginx qemu-utils libssl-dev libev-dev libvirt-dev libmysqlclient-dev libffi-dev libyaml-dev && \
+RUN apt-get install -y nginx qemu-utils libssl-dev libev-dev libvirt-dev libmysqlclient-dev libffi-dev libyaml-dev lsb-release python-pip && \
     apt-get clean
 
-RUN useradd -ms /bin/bash teuthworker
-RUN cd /home/teuthworker && \
-    export HOME=/home/teuthworker && \
-    sudo -u teuthworker mkdir -p /home/teuthworker/src && \
-    sudo -u teuthworker mkdir -p /home/teuthworker/archive/worker_logs && \
-    sudo -u teuthworker git clone -b jewel https://github.com/ceph/teuthology.git /home/teuthworker/src/teuthology && \
-    sudo -u teuthworker wget -O /home/teuthworker/src/teuthology/worker_start https://raw.githubusercontent.com/ceph/teuthology/jewel/docs/_static/worker_start.sh && \
-    sudo -u teuthworker /bin/bash -c "pushd src/teuthology/; ./bootstrap;"
+RUN cd /root && \
+    mkdir -p /root/archive/worker_logs && \
+    mkdir -p /root/src && \
+    git clone https://github.com/ceph/teuthology.git /root/src/worker && \
+    /bin/bash -c "pushd src/worker/; ./bootstrap;"
 
-RUN useradd -ms /bin/bash teuthology
-RUN cd /home/teuthology && \
-    export HOME=/home/teuthology && \
-    sudo -u teuthology mkdir -p ~/src && \
-    sudo -u teuthology git clone -b jewel https://github.com/ceph/teuthology.git /home/teuthology/src/teuthology && \
-    sudo -u teuthology /bin/bash -c "pushd src/teuthology/; ./bootstrap;"
+RUN cd /root && \
+    git clone https://github.com/ceph/teuthology.git /root/src/teuthology && \
+    /bin/bash -c "pushd src/teuthology/; ./bootstrap;"
 
-RUN wget -O /etc/nginx/sites-available/nginx_test_logs  http://docs.ceph.com/teuthology/docs/_static/nginx_test_logs && \
-    ln -s /etc/nginx/sites-available/nginx_test_logs /etc/nginx/sites-enabled/ && \
+ADD nginx_test_logs /etc/nginx/sites-available/nginx_test_logs
+RUN ln -s /etc/nginx/sites-available/nginx_test_logs /etc/nginx/sites-enabled/ && \
     rm /etc/nginx/sites-enabled/default
+
+RUN /bin/bash -c "source /root/src/worker/virtualenv/bin/activate; pip install requests==2.12.5; pip install Babel==2.3.4"
+RUN /bin/bash -c "source /root/src/teuthology/virtualenv/bin/activate; pip install requests==2.12.5; pip install Babel==2.3.4"
 
 ADD run.sh /run.sh
 ADD teuthology.yaml /etc/teuthology.yaml
+ADD create_nodes.py /usr/local/bin/create_nodes.py
+ADD worker_start.sh /usr/local/bin/worker_start.sh
+
+RUN mkdir -p /usr/share/nginx/html/ceph-deb-trusty-x86_64-basic/sha1/460b12c259f5563d9d1b2477149fe79486ba5bcd
+ADD version /usr/share/nginx/html/ceph-deb-trusty-x86_64-basic/sha1/460b12c259f5563d9d1b2477149fe79486ba5bcd/version
 
 CMD ["/run.sh"]
