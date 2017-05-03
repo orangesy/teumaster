@@ -1,4 +1,4 @@
-FROM simonchuang12/teumaster-base
+FROM snowhigh/teumaster-base
 
 RUN apt-get install -y iptables && \
     apt-get clean

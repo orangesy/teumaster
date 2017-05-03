@@ -1,4 +1,4 @@
-FROM simonchuang12/teumaster-base
+FROM snowhigh/teumaster-base
 
 RUN apt-get install -y postgresql postgresql-contrib postgresql-server-dev-all supervisor gcc && \
     apt-get clean

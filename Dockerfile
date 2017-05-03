@@ -1,4 +1,4 @@
-FROM simonchuang12/teumaster-base
+FROM snowhigh/teumaster-base
 
 RUN apt-get install -y nginx qemu-utils libssl-dev libev-dev libvirt-dev libmysqlclient-dev libffi-dev libyaml-dev lsb-release python-pip && \
     apt-get clean
