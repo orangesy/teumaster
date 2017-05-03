@@ -1,5 +1,13 @@
 #!/bin/bash
 
+function shut_down() {
+    echo shutting down
+    /etc/init.d/nginx stop
+    /etc/init.d/beanstalkd stop
+    exit
+}
+trap "shut_down" SIGKILL SIGTERM SIGHUP SIGINT EXIT
+
 /etc/init.d/beanstalkd start
 /etc/init.d/nginx start
 bash -c "cd /root/src/worker; source /root/src/worker/virtualenv/bin/activate; worker_start.sh magna 1"
