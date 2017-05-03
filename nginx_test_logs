@@ -3,7 +3,6 @@ server {
                 rewrite /teuthology/(.*)   /$1   break;
         	allow all;
         	autoindex on;
-#        server_name *;
         	root /opt/archive;
         	default_type text/plain;
 	}
