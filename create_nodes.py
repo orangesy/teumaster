@@ -8,15 +8,16 @@
 import logging
 import sys
 from teuthology.orchestra.remote import Remote
-from teuthology.lock import update_inventory
+from teuthology.lock.ops import update_inventory
+
 paddles_url = 'http://paddles.example.com/nodes/'
 
-machine_type = 'magna'
+machine_type = 'typica'
 lab_domain = 'example.com'
 # Don't change the user. It won't work at this time.
 user = 'ubuntu'
 # We are populating 'typica003' -> 'typica192'
-machine_index_range = range(1, 4)
+machine_index_range = range(3, 192)
 
 log = logging.getLogger(sys.argv[0])
 logging.getLogger("requests.packages.urllib3.connectionpool").setLevel(

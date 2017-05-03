@@ -4,7 +4,7 @@ server {
         	allow all;
         	autoindex on;
 #        server_name *;
-        	root /home/teuthworker/archive;
+        	root /opt/archive;
         	default_type text/plain;
 	}
 }
