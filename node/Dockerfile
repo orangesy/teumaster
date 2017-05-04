@@ -1,6 +1,6 @@
 FROM snowhigh/teumaster-base
 
-RUN apt-get install -y iptables lsb-release upstart rsyslog && \
+RUN apt-get install -y iptables lsb-release rsyslog grub-common && \
     apt-get clean
 
 RUN useradd -ms /bin/bash ubuntu && \
@@ -12,6 +12,7 @@ RUN useradd -ms /bin/bash ubuntu && \
     adduser ubuntu sudo && \
     echo "ubuntu ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers.d/ubuntu
 
+RUN touch /kernel-logging-setup
 ENV HOME /home/ubuntu
 WORKDIR /home/ubuntu
 
