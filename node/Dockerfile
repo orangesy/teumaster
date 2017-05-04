@@ -1,6 +1,6 @@
 FROM snowhigh/teumaster-base
 
-RUN apt-get install -y iptables lsb-release rsyslog grub-common && \
+RUN apt-get install -y iptables lsb-release rsyslog grub-common apt-transport-https && \
     apt-get clean
 
 RUN useradd -ms /bin/bash ubuntu && \
