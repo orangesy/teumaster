@@ -1,6 +1,6 @@
 FROM snowhigh/teumaster-base
 
-RUN apt-get install -y iptables && \
+RUN apt-get install -y iptables lsb-release upstart && \
     apt-get clean
 
 RUN useradd -ms /bin/bash ubuntu && \
