@@ -24,6 +24,7 @@ RUN git clone https://github.com/orangesy/ceph.git /root/src/github.com_orangesy
     git clone https://github.com/orangesy/teuthology.git /root/src/github.com_orangesy_teuthology_master && \
     git clone https://github.com/orangesy/ceph-cm-ansible.git /root/src/github.com_orangesy_ceph-cm-ansible_master
 
+ADD optional.yaml /root/src/github.com_orangesy_ceph_jewel/optional.yaml
 ADD run.sh /run.sh
 ADD teuthology.yaml /etc/teuthology.yaml
 ADD create_nodes.py /usr/local/bin/create_nodes.py
