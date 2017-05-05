@@ -20,17 +20,15 @@ RUN /bin/bash -c "source /root/src/worker/virtualenv/bin/activate; pip install r
     /bin/bash -c "source /root/src/teuthology/virtualenv/bin/activate; pip install requests==2.12.5; pip install Babel==2.3.4"
 
 # pre clone for worker and scheduler
-RUN git clone https://github.com/ceph/ceph.git /root/src/github.com_ceph_ceph_master && \
-    git clone https://github.com/ceph/teuthology.git /root/src/github.com_ceph_teuthology_master
+RUN git clone https://github.com/orangesy/ceph.git /root/src/github.com_orangesy_ceph_jewel && \
+    git clone https://github.com/orangesy/teuthology.git /root/src/github.com_orangesy_teuthology_master && \
+    git clone https://github.com/orangesy/ceph-cm-ansible.git /root/src/github.com_orangesy_ceph-cm-ansible_master
 
 ADD run.sh /run.sh
 ADD teuthology.yaml /etc/teuthology.yaml
 ADD create_nodes.py /usr/local/bin/create_nodes.py
 ADD worker_start.sh /usr/local/bin/worker_start.sh
 ADD README.md /README.md
-
-#RUN mkdir -p /usr/share/nginx/html/ceph-deb-trusty-x86_64-basic/sha1/460b12c259f5563d9d1b2477149fe79486ba5bcd
-#ADD version /usr/share/nginx/html/ceph-deb-trusty-x86_64-basic/sha1/460b12c259f5563d9d1b2477149fe79486ba5bcd/version
 
 RUN echo "source /root/src/teuthology/virtualenv/bin/activate" >> /root/.bashrc
 
