@@ -1,4 +1,5 @@
 default_machine_type: magna
+modify_fstab: false
 lock_server: http://127.0.0.1:8088/
 results_server: http://127.0.0.1:8088/
 results_ui_server: http://127.0.0.1:8089/
@@ -17,4 +18,3 @@ archive_server: http://localhost/teuthology/
 max_job_time: 86400
 automated_scheduling: true
 watchdog_interval: 10
-modify_fstab: false
