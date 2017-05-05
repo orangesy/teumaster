@@ -1,0 +1,2 @@
+#!/bin/bash
+/usr/bin/rbd --conf ~/ceph_config/ceph.conf "$@"

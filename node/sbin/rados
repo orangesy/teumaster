@@ -1,0 +1,2 @@
+#!/bin/bash
+/usr/bin/rados --conf ~/ceph_config/ceph.conf "$@"
