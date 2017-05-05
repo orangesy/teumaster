@@ -14,13 +14,14 @@ function start_workers_for_tube {
 }
  
 function start_all {
-    start_workers_for_tube plana 50
-    start_workers_for_tube mira 50
-    start_workers_for_tube vps 80
-    start_workers_for_tube burnupi 10
-    start_workers_for_tube tala 5
-    start_workers_for_tube saya 10
-    start_workers_for_tube multi 100
+    start_workers_for_tube magna 1
+    #start_workers_for_tube plana 50
+    #start_workers_for_tube mira 50
+    #start_workers_for_tube vps 80
+    #start_workers_for_tube burnupi 10
+    #start_workers_for_tube tala 5
+    #start_workers_for_tube saya 10
+    #start_workers_for_tube multi 100
 }
  
 function main {
