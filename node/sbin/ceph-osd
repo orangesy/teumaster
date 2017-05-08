@@ -1,0 +1,2 @@
+#!/bin/bash
+/usr/bin/ceph-osd --conf ~/ceph_config/ceph.conf "$@"
