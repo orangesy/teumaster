@@ -16,6 +16,7 @@ RUN touch /kernel-logging-setup
 ENV HOME /home/ubuntu
 WORKDIR /home/ubuntu
 
+RUN echo 'CEPH_CONF="/home/ubuntu/ceph_config/ceph.conf"' >> /etc/environment
 ENV PATH /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 ENV CEPH_CONF /home/ubuntu/ceph_config/ceph.conf
 RUN sudo -u ubuntu mkdir /home/ubuntu/ceph_config
